@@ -33,7 +33,7 @@ def Blackjack():
   loss = 0
   print()
 
-  play = input("Deal Hand? (Y) or (N): ")
+  play = input("Deal Hand? (Y) or (N): ").lower()
   while account_balance > 0 and play == "Y":
       user_count = 0
       dealer_count = 0
@@ -195,5 +195,14 @@ def Blackjack():
       out = "Profit: $" + str(profit)
     return out
   elif play == "N":
-    return "Thanks for playing!"
+    print("Thanks for playing!")
+    print()
+    print("Session final stats:")
+    print("W/L: {0}-{1}".format(win,loss))
+    profit = account_balance - starting_balance
+    if profit < 0:
+      out = "Profit: -$" + str(abs(profit))
+    else:
+      out = "Profit: $" + str(profit)
+    return out
 print(Blackjack())
